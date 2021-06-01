@@ -30,6 +30,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         btnBack = findViewById(R.id.btnBack_add);
 
         btnCreate.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +52,10 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
 
                     }
                 });
+                break;
+            }
+            case R.id.btnBack_add: {
+                finish();
             }
         }
     }

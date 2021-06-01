@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements onClickListener {
 
         recyclerV = findViewById(R.id.recyclerV);
         users = new ArrayList<>();
-        adt = new CustomAdapter(users,this);
+        adt = new CustomAdapter( getBaseContext(),users,this);
 
         recyclerV.setHasFixedSize(true);
         recyclerV.setAdapter(adt);
