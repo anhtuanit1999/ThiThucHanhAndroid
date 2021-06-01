@@ -58,6 +58,8 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         Toast.makeText(getBaseContext(), "success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -68,7 +70,8 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case R.id.btnBack_update: {
-                finish();
+                Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
             }
         }
