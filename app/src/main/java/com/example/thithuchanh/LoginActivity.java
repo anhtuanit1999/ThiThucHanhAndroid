@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtExit = findViewById(R.id.txtExit);
 
         btnLogin.setOnClickListener(this);
+        txtExit.setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +50,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass))
                     Toast.makeText(getBaseContext(), "Input field is empty", Toast.LENGTH_SHORT).show();
                 else login(email, pass);
+                break;
+            }
+            case R.id.txtExit: {
+                finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
+                break;
             }
         }
     }
@@ -60,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Intent intent = new Intent(LoginActivity.this, ManagerActivity.class);
+                            Toast.makeText(getBaseContext(), "success", Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         } else {
                             Toast.makeText(getBaseContext(), "Fail", Toast.LENGTH_SHORT).show();
