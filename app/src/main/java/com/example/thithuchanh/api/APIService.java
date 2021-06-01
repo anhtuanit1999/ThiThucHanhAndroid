@@ -1,5 +1,6 @@
-package com.example.thithuchanh;
+package com.example.thithuchanh.api;
 
+import com.example.thithuchanh.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
