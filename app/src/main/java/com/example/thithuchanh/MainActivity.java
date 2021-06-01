@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.thithuchanh.api.APIService;
@@ -16,10 +18,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements onClickListener {
+public class MainActivity extends AppCompatActivity implements onClickListener, View.OnClickListener {
     List<User> users;
     RecyclerView recyclerV;
     CustomAdapter adt;
+
+    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements onClickListener {
         recyclerV = findViewById(R.id.recyclerV);
         users = new ArrayList<>();
         adt = new CustomAdapter( getBaseContext(),users,this);
+
+        btnBack = findViewById(R.id.btnBack_main);
+        btnBack.setOnClickListener(this);
 
         recyclerV.setHasFixedSize(true);
         recyclerV.setAdapter(adt);
@@ -56,5 +63,14 @@ public class MainActivity extends AppCompatActivity implements onClickListener {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnBack_main: {
+                finish();
+            }
+        }
     }
 }

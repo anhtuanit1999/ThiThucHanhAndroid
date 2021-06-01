@@ -6,6 +6,9 @@ public class User {
     private String age;
     private String department;
 
+    public User() {
+    }
+
     public User(String id, String name, String age, String department) {
         this.id = id;
         this.name = name;

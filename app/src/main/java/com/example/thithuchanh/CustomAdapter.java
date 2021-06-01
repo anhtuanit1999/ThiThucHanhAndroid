@@ -43,9 +43,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         User user = mUsers.get(position);
         holder.muser = user;
         holder.tvStt.setText(user.getId());
-        holder.tvName.setText(user.getName());
-        holder.tvAge.setText(user.getAge());
-        holder.tvDepart.setText(user.getDepartment());
+        holder.tvName.setText("Name: " + user.getName());
+        holder.tvAge.setText("Age: " + user.getAge());
+        holder.tvDepart.setText("Dep: " + user.getDepartment());
         
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 APIService.apiService.deleteUser(user.getId()).enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-
+                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                        Toast.makeText(v.getContext(), "success", Toast.LENGTH_SHORT).show();
+                        v.getContext().startActivity(intent);
                     }
 
                     @Override
@@ -67,10 +69,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context ctx = new MainActivity().getBaseContext();
-                Intent intent = new Intent(ctx, UpdateActivity.class);
-                Toast.makeText(ctx, "success", Toast.LENGTH_SHORT).show();
-                ctx.startActivity(intent);
+                Intent intent = new Intent(v.getContext(), UpdateActivity.class);
+                intent.putExtra("id", user.getId());
+                intent.putExtra("name", user.getName());
+                intent.putExtra("age", user.getAge());
+                intent.putExtra("department", user.getDepartment());
+                Toast.makeText(v.getContext(), "success", Toast.LENGTH_SHORT).show();
+                v.getContext().startActivity(intent);
             }
         });
     }
