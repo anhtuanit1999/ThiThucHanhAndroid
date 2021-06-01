@@ -88,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvName_add" />
 
     <EditText
-        android:id="@+id/tvDepart_update"
+        android:id="@+id/tvDepart_add"
         android:layout_width="321dp"
         android:layout_height="59dp"
         android:layout_marginTop="32dp"
