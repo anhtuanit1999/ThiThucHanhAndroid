@@ -30,6 +30,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public void onBindViewHolder(@NonNull  CustomAdapter.ViewHolder holder, int position) {
         User user = mUsers.get(position);
         holder.muser = user;
+        holder.tvStt.setText(user.getId());
         holder.tvName.setText(user.getName());
         holder.tvAge.setText(user.getAge());
         holder.tvDepart.setText(user.getDepartment());
@@ -46,10 +47,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvAge, tvDepart;
+        TextView tvName, tvAge, tvDepart, tvStt;
         User muser;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvStt = itemView.findViewById(R.id.tvStt);
             tvName = itemView.findViewById(R.id.tvName_main);
             tvAge = itemView.findViewById(R.id.tvAge_main);
             tvDepart = itemView.findViewById(R.id.tvDepart_main);

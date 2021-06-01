@@ -1,14 +1,30 @@
 package com.example.thithuchanh;
 
 public class User {
+    private String id;
     private String name;
     private String age;
     private String department;
+
+    public User(String id, String name, String age, String department) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.department = department;
+    }
 
     public User(String name, String age, String department) {
         this.name = name;
         this.age = age;
         this.department = department;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
